@@ -24,9 +24,10 @@ def timer():
         while seconds >= 0 and started:
             label["text"] = str(int(seconds / 60)) + ":" + ("0" + str(seconds % 60) if seconds % 60 < 10 else
                                                             str(seconds % 60))
+            if seconds == 0:
+                playsound("zapsplat_bells_bell_small_hand_ring_ping_single_soft_003_67992.mp3")
             sleep(1)
             seconds -= 1
-        playsound("zapsplat_bells_bell_small_hand_ring_ping_single_soft_003_67992.mp3")
 
 
 def start():
