@@ -29,7 +29,6 @@ def timer():
 button = Button(win, text="Start", font=("Helvetica bold", 20), command=_thread.start_new_thread(timer()))
 button.pack()
 
-
 frame = Frame(win)
 
 frame.pack()
