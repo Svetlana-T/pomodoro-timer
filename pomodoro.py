@@ -1,5 +1,6 @@
 from tkinter import *
 from time import sleep
+import _thread
 
 win = Tk()
 win.title("Pomodoro Timer")
@@ -16,7 +17,8 @@ def timer():
         button["text"] = "Reset"
         seconds = 1500
         while seconds >= 0:
-            label['text'] = str(int(seconds / 60)) + ":" + str(seconds % 60)
+            label['text'] = str(int(seconds / 60)) + ":" + ("0" + str(seconds % 60) if seconds % 60 < 10 else
+                                                            str(seconds % 60))
             sleep(1)
             seconds -= 1
     else:
@@ -24,8 +26,9 @@ def timer():
         button["text"] = "Start"
 
 
-button = Button(win, text="Start", font=("Helvetica bold", 20), command=timer)
+button = Button(win, text="Start", font=("Helvetica bold", 20), command=_thread.start_new_thread(timer()))
 button.pack()
+
 
 frame = Frame(win)
 
